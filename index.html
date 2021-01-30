@@ -55,22 +55,22 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($150)</label>
-                    <input id="phone-count" class="inp-style inp-width" type="number" name="" value="0">
+                    <input id="firstclass-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="handleeconomy('phone',true)" class="btn btn-primary">+</button>
-                    <button onclick="handleeconomy('phone',false)" class="btn btn-primary">-</button>
+                    <button onclick="handleeconomy('firstclass',true)" class="btn btn-primary">+</button>
+                    <button onclick="handleeconomy('firstclass',false)" class="btn btn-primary">-</button>
                 </div>
             </div>
             
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($100)</label>
-                    <input id="case-count" class="inp-style inp-width" type="number" name="" value="0">
+                    <input id="economyclass-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
-                    <button onclick="handleeconomy('case',true)"class="btn btn-primary">+</button>
-                    <button onclick="handleeconomy('case',false)" class="btn btn-primary">-</button>
+                    <button onclick="handleeconomy('economyclass',true)"class="btn btn-primary">+</button>
+                    <button onclick="handleeconomy('economyclass',false)" class="btn btn-primary">-</button>
                 </div>
             </div>
             <div class="calculations">
@@ -79,7 +79,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$ <span id="phone-total">0</span></p>
+                        <p>$ <span id="firstclass-total">0</span></p>
                     </div>
                 </div>
 
@@ -129,7 +129,7 @@
         </div>
     </main>
  <script>
-     let total1=0,firstclass=0,economyclass=0;;
+     let total1=0,firstclass=0,economyclass=0,newcount=0;
      let total2=0;
   function handleeconomy(product,isIncrease){
                var val= document.getElementById(product+'-count');
@@ -143,22 +143,21 @@
               }
                val.value=newcount;
                
-              if(product=='phone'){
-                  var firstclass=newcount;
+              if(product=='firstclass'){
+                 var firstclass=newcount;
                  total1=newcount*150;
+                
                }
-               if(product=='case'){
+               if(product=='economyclass'){
                    var economyclass=newcount;
                    total2=newcount*100;
                }
                let total=total1+total2;
-               document.getElementById('phone-total').innerText=total;
+               document.getElementById('firstclass-total').innerText=total;
                let vat=total*.10;
                let totalamount=total+vat;
                document.getElementById('vat').innerText=vat;
                document.getElementById('total-amount').innerText=totalamount;
-               console.log("economy class="+ economyclass);
-               console.log("first class="+ firstclass)
                displaycost(firstclass,economyclass,vat,totalamount);
                
           }
@@ -171,11 +170,10 @@
          })
          function displaycost(a,b,c,d){
            
-                 document.getElementById('first-class').innerText=a;
-                 document.getElementById('economy-class').innerText=b;
-                 document.getElementById('vat-amount').innerText=c;
-                 document.getElementById('amount').innerText=d;
-
+                  document.getElementById('first-class').innerText=a;
+                  document.getElementById('economy-class').innerText=b;
+                  document.getElementById('vat-amount').innerText=c;
+                  document.getElementById('amount').innerText=d;
              }
 
  </script>
